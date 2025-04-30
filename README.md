@@ -13,9 +13,9 @@ Note: Library is highly opinionated and may not be suitable for all use cases. U
   - No need to pass API keys to individual endpoint classes.
 - Feature parity with SimpleMDM's API.
   - Currently validated against version 1.51.
-- Function names matching SimpleMDM's API.
+- Function names matching SimpleMDM's API documentation.
   - ex. `SimpleMDM.Accounts.show()` instead of `SimpleMDM.Accounts.get_account()`.
-  - Easier referencing of SimpleMDM's API documentation.
+  - Easier cross referencing of https://api.simplemdm.com.
 - Pydantic models for API responses.
   - Provides type hints and validation for API responses.
   - Configure strictness of validation with `os.environ["SimpleMDMSDKModelExtra"] = "xxx"` before importing the library.
