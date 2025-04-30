@@ -41,7 +41,7 @@ simplemdm = SimpleMDM(api_key)
 
 # List all devices
 devices = simplemdm.devices.list_all()
-print(devices)
+print(devices.data[0].attributes.name)
 ```
 
 ## Supported functions
