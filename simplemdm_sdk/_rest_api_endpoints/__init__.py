@@ -1,5 +1,5 @@
 """
-___init__.py: SimpleMDM REST API endpoint initialization file.
+__init__.py: SimpleMDM REST API endpoint initialization file.
 """
 
 from .account import Account
