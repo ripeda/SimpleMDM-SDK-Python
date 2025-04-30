@@ -22,11 +22,11 @@ setup(
     license=fetch_property("__license__:"),
     url=fetch_property("__url__:"),
     python_requires='>=3.6',
+    install_requires=open("requirements.txt", "r").readlines(),
     packages=find_packages(include=["simplemdm_sdk"]),
     package_data={
         "simplemdm_sdk": ["*"],
         "simplemdm_sdk._rest_api_endpoints": ["*"],
     },
     py_modules=["simplemdm_sdk"],
-    install_requires=open("requirements.txt", "r").readlines(),
 )
