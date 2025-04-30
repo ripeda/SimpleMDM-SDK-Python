@@ -36,11 +36,19 @@ class Devices(Connection):
         self._endpoint = "devices"
 
 
-    def list_all(self) -> DevicesListAllResponse:
+    def list_all(self, search: str = None, include_awaiting_enrollment: bool = None, include_secret_custom_attributes: bool = None) -> DevicesListAllResponse:
         """
         List all devices.
         """
-        result = self._get(endpoint=self._endpoint)
+        parameters = {}
+        if search:
+            parameters["search"] = search
+        if include_awaiting_enrollment is not None:
+            parameters["include_awaiting_enrollment"] = include_awaiting_enrollment
+        if include_secret_custom_attributes is not None:
+            parameters["include_secret_custom_attributes"] = include_secret_custom_attributes
+
+        result = self._get(endpoint=self._endpoint, params=parameters)
         return DevicesListAllResponse(**result)
 
 
