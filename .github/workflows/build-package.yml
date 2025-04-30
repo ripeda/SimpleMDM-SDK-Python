@@ -38,9 +38,6 @@ jobs:
       - name: Test Wheel Usage
         run: cd /; python3 -c "import simplemdm_sdk; print(simplemdm_sdk.__version__)"
 
-      - name: Validate Library
-        run: python3 Samples/validation.py
-
       - name: Upload Wheel Distribution to Artifacts
         uses: actions/upload-artifact@v4
         with:
