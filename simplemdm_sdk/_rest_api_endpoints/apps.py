@@ -25,9 +25,14 @@ class Apps(Connection):
         """
         Retrieve a list of all apps.
         """
-        parameters = {
-            "include_shared": include_shared
-        }
+        parameters = {}
+
+        # SimpleMDM's API is broken... If you include 'include_shared' regardless of its value,
+        # it will return the same result as if you set it to True...
+
+        if include_shared:
+            parameters["include_shared"] = include_shared
+
         result = self._get(self._endpoint, parameters)
         return AppsListAllResponse(**result)
 
