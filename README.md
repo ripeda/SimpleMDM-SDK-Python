@@ -39,10 +39,25 @@ from simplemdm_sdk import SimpleMDM
 api_key = "your_api_key"
 simplemdm = SimpleMDM(api_key)
 
-# List all devices
-devices = simplemdm.devices.list_all()
-print(devices.data[0].attributes.name)
+# List all device names
+for device in simplemdm.devices.list_all().data:
+    print(device.attributes.name)
 ```
+
+* Recommend right clicking data and selecting "Go to definition" in your IDE to see the Pydantic model for the response.
+
+```py
+class DeviceData(SimpleMDMSDKModel):
+    type:          str
+    id:            int
+    attributes:    Optional[DeviceAttributes]    = None
+    relationships: Optional[DeviceRelationships] = None
+
+
+class DevicesListAllResponse(SimpleMDMSDKModel):
+    data: list[DeviceData]
+```
+
 
 ## Supported functions
 
