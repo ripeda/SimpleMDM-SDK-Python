@@ -132,19 +132,19 @@ class Connection:
         return contents
 
 
-    def _post(self, endpoint: str, data: dict = None, files: dict = None) -> dict:
+    def _post(self, endpoint: str, params: dict = None, files: dict = None) -> dict:
         """
         REST POST request.
         """
-        response = self.__exec("post", f"{self._base}/{endpoint}", params=data, files=files)
+        response = self.__exec("post", f"{self._base}/{endpoint}", params=params, files=files)
         return self.__process_content_type(response)
 
 
-    def _put(self, endpoint: str, data: dict = None) -> dict:
+    def _put(self, endpoint: str, params: dict = None) -> dict:
         """
         REST PUT request.
         """
-        response = self.__exec("put", f"{self._base}/{endpoint}", params=data)
+        response = self.__exec("put", f"{self._base}/{endpoint}", params=params)
         return self.__process_content_type(response)
 
 
@@ -156,9 +156,9 @@ class Connection:
         return self.__process_content_type(response)
 
 
-    def _patch(self, endpoint: str, data: dict = None, files: dict = None) -> dict:
+    def _patch(self, endpoint: str, params: dict = None, files: dict = None) -> dict:
         """
         REST PATCH request.
         """
-        response = self.__exec("patch", f"{self._base}/{endpoint}", data=data, files=files)
+        response = self.__exec("patch", f"{self._base}/{endpoint}", params=params, files=files)
         return self.__process_content_type(response)
