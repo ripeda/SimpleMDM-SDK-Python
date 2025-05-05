@@ -29,7 +29,7 @@ class ScriptJobs(Connection):
         return ScriptJobResponse(**result)
 
 
-    def create(self, script_id: str, device_ids: list[str] = None, group_ids: list[str] = None, assignment_group_ids: list[str] = None, custom_attribute: str = None, custom_attribute_regex: str = r"\n") -> ScriptJobResponse:
+    def create(self, script_id: str, device_ids: list[int] = None, group_ids: list[int] = None, assignment_group_ids: list[int] = None, custom_attribute: str = None, custom_attribute_regex: str = r"\n") -> ScriptJobResponse:
         """
         Create a script job.
         """
@@ -37,11 +37,11 @@ class ScriptJobs(Connection):
             "script_id": script_id,
         }
         if device_ids:
-            parameters["device_ids"] = ",".join(device_ids)
+            parameters["device_ids"] = ",".join(map(str, device_ids))
         if group_ids:
-            parameters["group_ids"] = ",".join(group_ids)
+            parameters["group_ids"] = ",".join(map(str, group_ids))
         if assignment_group_ids:
-            parameters["assignment_group_ids"] = ",".join(assignment_group_ids)
+            parameters["assignment_group_ids"] = ",".join(map(str, assignment_group_ids))
         if custom_attribute:
             parameters["custom_attribute"] = custom_attribute
         if custom_attribute_regex:

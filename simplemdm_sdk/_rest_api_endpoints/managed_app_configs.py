@@ -23,18 +23,18 @@ class ManagedAppConfigs(Connection):
 
     def __init__(self, api_key):
         super().__init__(api_key)
-        self._endpoint = "managed_configs"
+        self._endpoint = "apps"
 
 
     def get(self, managed_app_config_id: int) -> ManagedAppConfigListResponse:
         """
         Retrieve a managed app config.
         """
-        result = self._get(endpoint=f"{self._endpoint}/{managed_app_config_id}")
+        result = self._get(endpoint=f"{self._endpoint}/{managed_app_config_id}/managed_configs")
         return ManagedAppConfigListResponse(**result)
 
 
-    def create(self, managed_app_config_id: int, key: str, value: str = None, value_type: ValueType = None) -> ManagedAppConfigResponse:
+    def create(self, app_id: int, key: str, value: str = None, value_type: ValueType = None) -> ManagedAppConfigResponse:
         """
         Create a managed app config.
         """
@@ -46,19 +46,19 @@ class ManagedAppConfigs(Connection):
         if value_type is not None:
             parameters["value_type"] = value_type.value
 
-        result = self._post(endpoint=f"{self._endpoint}/{managed_app_config_id}", json=parameters)
+        result = self._post(endpoint=f"{self._endpoint}/{app_id}/managed_configs", params=parameters)
         return ManagedAppConfigResponse(**result)
 
 
-    def delete(self, managed_app_config_id: int) -> None:
+    def delete(self, app_id: int, managed_app_config_id: int) -> None:
         """
         Delete a managed app config.
         """
-        self._delete(endpoint=f"{self._endpoint}/{managed_app_config_id}")
+        self._delete(endpoint=f"{self._endpoint}/{app_id}/managed_configs/{managed_app_config_id}")
 
 
-    def push_updates(self, managed_app_config_id: int) -> None:
+    def push_updates(self, app_id: int) -> None:
         """
         Push updates to a managed app config.
         """
-        self._post(endpoint=f"{self._endpoint}/{managed_app_config_id}/push")
+        self._post(endpoint=f"{self._endpoint}/{app_id}/managed_configs/push")

@@ -40,7 +40,7 @@ class Scripts(Connection):
             "name": name,
         }
         if variable_support is not None:
-            parameters["variable_support"] = 1 if variable_support else 0
+            parameters["variable_support"] = True if variable_support else False
 
         result = self._post(self._endpoint, parameters, files)
         return ScriptResponse(**result)
