@@ -10,6 +10,9 @@
 - Set `User-Agent` header to `SimpleMDM-SDK-Python / {version}`.
 - Set `Accept` header to `application/json, application/x-plist`
 - Set `Content-Type` header to `application/json`
+- Add `validation` library to validate `SimpleMDM SDK` methods.
+  - See `validation.py` for more information.
+  - Note not all methods are validated yet.
 
 ### 0.0.1
 - Initial alpha release.
