@@ -19,6 +19,7 @@ Note: Library is highly opinionated and may not be suitable for all use cases. U
 - Pydantic models for API responses.
   - Provides type hints and validation for API responses.
   - Configure strictness of validation with `os.environ["SimpleMDMSDKModelExtra"] = "xxx"` before importing the library.
+  - Defaults to `allow`, see [Pydantic's `ConfigDict.extra` documentation](https://docs.pydantic.dev/latest/api/config/#pydantic.config.ConfigDict.extra) for more information.
 - Automatic ratelimit handling for all REST methods.
 - Enums for static properties in function parameters.
   - ex. `SimpleMDM.AssignmentGroups.MunkiInstallType` instead of strings.
