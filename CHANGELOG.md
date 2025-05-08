@@ -2,6 +2,8 @@
 
 ### 1.0.0
 - Add `text/plain` to `Accept` header.
+- Add handling for 500 server error on `custom_configuration_profiles` endpoint.
+  - Strips `Content-Type` header from PATCH requests.
 
 ### 0.1.0
 - Add search parameters to `SimpleMDM.devices.list_all()`

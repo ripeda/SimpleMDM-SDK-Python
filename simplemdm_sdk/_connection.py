@@ -73,7 +73,13 @@ class Connection:
         """
         function = getattr(self._session, method)
         while True:
-            response: requests.Response = function(url, params=params, files=files)
+            if not (method == "patch" and url.startswith("https://a.simplemdm.com/api/v1/custom_configuration_profiles")):
+                response: requests.Response = function(url, params=params, files=files)
+            else:
+                # Specifying Content-Type results in a 500 error on 'https://a.simplemdm.com/api/v1/custom_configuration_profiles'
+                fixed_headers = dict(self._session.headers)
+                fixed_headers.pop("Content-Type")
+                response = requests.patch(url, params=params, files=files, auth=self._session.auth, headers=fixed_headers)
             try:
                 response.raise_for_status()
             except requests.exceptions.HTTPError as e:
