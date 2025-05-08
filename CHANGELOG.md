@@ -1,5 +1,8 @@
 # SimpleMDM SDK Python CHANGELOG
 
+### 1.0.0
+- Add `text/plain` to `Accept` header.
+
 ### 0.1.0
 - Add search parameters to `SimpleMDM.devices.list_all()`
 - Resolve error in PATCH method for `_connection.py`.

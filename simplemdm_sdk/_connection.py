@@ -23,9 +23,9 @@ class Connection:
         self._session.auth = HTTPBasicAuth(api_key, "")
 
         self._session.headers.update({
-            "Accept":       "application/json, application/x-plist",
+            "Accept":       "application/json, application/x-plist, text/plain",
             "Content-Type": "application/json",
-            "User-Agent":   "SimpleMDM-SDK-Python / 0.1.0"
+            "User-Agent":   "SimpleMDM-SDK-Python / 1.0.0"
         })
 
 
